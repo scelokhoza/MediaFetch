@@ -3,18 +3,6 @@ import os
 
 
 
-# stream = YouTube(self.url).streams.get_by_resolution(resolution=chosen_resolution)
-    
-#     if stream:
-#         # If the stream exists, download it
-#         stream.download(output_path=self.download_path)
-#         print(f"Downloaded {self.url} to {self.download_path}")
-#     else:
-#         # If the stream doesn't exist, inform the user
-#         print(f"No stream available for {chosen_resolution}")
-
-
-
 class DownloadVideo:
     def __init__(self, url)-> None:
         self.url = url
@@ -47,7 +35,7 @@ class DownloadVideo:
             return []
     
     
-    def display_resolution_options(self, videos):
+    def display_resolution_options(self, videos: list):
         """
         This method displays the available video resolutions for download.
 
