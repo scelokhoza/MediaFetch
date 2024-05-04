@@ -2,7 +2,16 @@ from pytube import YouTube
 import os
 
 
-# YouTube('http://youtube.com/watch?v=9bZkp7q19f0').streams.get_by_resolution('7').
+
+# stream = YouTube(self.url).streams.get_by_resolution(resolution=chosen_resolution)
+    
+#     if stream:
+#         # If the stream exists, download it
+#         stream.download(output_path=self.download_path)
+#         print(f"Downloaded {self.url} to {self.download_path}")
+#     else:
+#         # If the stream doesn't exist, inform the user
+#         print(f"No stream available for {chosen_resolution}")
 
 
 
@@ -31,14 +40,14 @@ class DownloadVideo:
 
         try:
             yt = YouTube(self.url)
-            videos: list = yt.streams.filter(mime_type="video/mp4" ,progressive=True)
+            videos: list = yt.streams.filter(mime_type="video/mp4" ,adaptive=True).order_by('resolution').desc()
             return videos
         except ConnectionError:
             print("Connection Error, check your internet connection!!")
             return []
     
     
-    def display_resolution_options(self):
+    def display_resolution_options(self, videos):
         """
         This method displays the available video resolutions for download.
 
@@ -51,12 +60,36 @@ class DownloadVideo:
         Example:
         >>> download_video_obj.display_resolution_options()
         """
-        videos: list = self.get_videos_only()
         for i, video in enumerate(videos):
-            print(f"{i+1}. {self.filter_string(video)}")
+            # stream = YouTube(self.url).streams.get_by_resolution(resolution=video.resolution)
+            # if stream:
+            if self.is_downloadable(video):
+                print(f"{i+1}. {self.filter_string(video)} DOWNLOAD")
+            else:
+                print(f"{i+1}. {self.filter_string(video)} NOT AVAILABLE")
             
     
-    def filter_string(self, video_info: str) -> str:
+    def is_downloadable(self, stream_object: object) -> bool:
+        """
+        This function checks if the stream is downloadable.
+
+        Args:
+        stream_object (object): The stream object obtained from the YouTube object.
+
+        Returns:
+        bool: True if the stream is downloadable, False otherwise.
+
+        Example:
+        >>> is_downloadable(stream_object)
+        True
+        """
+        stream = YouTube(self.url).streams.get_by_resolution(resolution=stream_object.resolution)
+        if stream:
+            return True
+        return 
+    
+    
+    def filter_string(self, video_info) -> str:
         """
         This function filters the video information string to extract the resolution details.
 
@@ -71,10 +104,10 @@ class DownloadVideo:
         >>> filter_string(video_info)
         'video/mp4' '1280x720'
         """
-        return video_info.split()[2] + "  "+ video_info.split()[3]        
+        return video_info.mime_type + "  "+ video_info.resolution       
     
     
-    def select_resolution_option(self):
+    def select_resolution_option(self, videos: list):
         """
         This method prompts the user to select a video resolution for download.
 
@@ -92,11 +125,11 @@ class DownloadVideo:
         Enter the number of the resolution you want: 2
         2
         """
-        self.display_resolution_options()
+        self.display_resolution_options(videos)
         while True:
             try:
                 resolution_option = int(input("Enter the number of the resolution you want: "))
-                if resolution_option in range(1, len(self.get_videos_only()) + 1):
+                if resolution_option in range(1, len(videos) + 1):
                     return resolution_option
                 else:
                     print("Please enter a valid number")
@@ -121,14 +154,17 @@ class DownloadVideo:
         >>> download_video_obj.download_video()
         """
         videos = self.get_videos_only()
-        resolution_option = self.select_resolution_option()
-        video: str = videos[resolution_option - 1]
-        resolution: str = video.split()[3].split('=')[1]
-        YouTube(self.url).streams.get_by_resolution(resolution).download(output_path=self.download_path)
-        print(f"Downloaded {self.url} to {self.download_path}")
+        resolution_option = self.select_resolution_option(videos)
+        video = videos[resolution_option - 1]
+        if self.is_downloadable(video):
+            YouTube(self.url).streams.get_by_resolution(resolution=video.resolution).download(output_path=self.download_path)
+            print(f"Downloaded {self.url} to {self.download_path}")
+        else:
+            print(f"No stream available for {self.filter_string(video)}")
         
 
 
-
 if __name__ == "__main__":
-    url = "https://www.youtube.com/watch?v=OpohbXB_JZU"
+    url = "https://www.youtube.com/watch?v=42iQKuQodW4"
+    download_video_obj = DownloadVideo(url)
+    download_video_obj.download_video()
