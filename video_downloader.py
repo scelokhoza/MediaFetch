@@ -13,6 +13,22 @@ class DownloadVideo:
         
     
     def get_videos_only(self) -> list:
+        """
+        This method fetches the video streams from the YouTube URL.
+
+        Args:
+        self (DownloadVideo): An instance of the DownloadVideo class.
+
+        Returns:
+        list: A list of video streams available for download.
+
+        Raises:
+        ConnectionError: If there is a problem with the internet connection.
+
+        Example:
+        >>> video_streams = download_video_obj.get_videos_only()
+        """
+
         try:
             yt = YouTube(self.url)
             videos: list = yt.streams.filter(mime_type="video/mp4" ,progressive=True)
@@ -23,16 +39,59 @@ class DownloadVideo:
     
     
     def display_resolution_options(self):
+        """
+        This method displays the available video resolutions for download.
+
+        Args:
+        self (DownloadVideo): An instance of the DownloadVideo class.
+
+        Returns:
+        None
+
+        Example:
+        >>> download_video_obj.display_resolution_options()
+        """
         videos: list = self.get_videos_only()
         for i, video in enumerate(videos):
             print(f"{i+1}. {self.filter_string(video)}")
             
     
     def filter_string(self, video_info: str) -> str:
+        """
+        This function filters the video information string to extract the resolution details.
+
+        Args:
+        video_info (str): The video information string obtained from the YouTube object.
+
+        Returns:
+        str: A string containing the video resolution in the format "widthxheight" and the video format "video/format".
+
+        Example:
+        >>> video_info = "video/mp4;abr=128000,res=1280x720"
+        >>> filter_string(video_info)
+        'video/mp4' '1280x720'
+        """
         return video_info.split()[2] + "  "+ video_info.split()[3]        
     
     
     def select_resolution_option(self):
+        """
+        This method prompts the user to select a video resolution for download.
+
+        Args:
+        self (DownloadVideo): An instance of the DownloadVideo class.
+
+        Returns:
+        int: The user's selected video resolution index.
+
+        Raises:
+        ValueError: If the user enters an invalid number.
+
+        Example:
+        >>> download_video_obj.select_resolution_option()
+        Enter the number of the resolution you want: 2
+        2
+        """
         self.display_resolution_options()
         while True:
             try:
@@ -46,6 +105,21 @@ class DownloadVideo:
                 
     
     def download_video(self):
+        """
+        This method downloads the selected video from the YouTube URL to the specified download path.
+
+        Args:
+        self (DownloadVideo): An instance of the DownloadVideo class.
+
+        Returns:
+        None
+
+        Raises:
+        ValueError: If the user enters an invalid number for selecting a resolution.
+
+        Example:
+        >>> download_video_obj.download_video()
+        """
         videos = self.get_videos_only()
         resolution_option = self.select_resolution_option()
         video: str = videos[resolution_option - 1]
