@@ -27,7 +27,7 @@ class DownloadAudio:
         return audios
     
     
-    def display_average_bitrate(self, audios: list):
+    def display_average_bitrate(self, audios: list) -> None:
         for i, audio in enumerate(audios):
             if self.is_downloadable(audio):
                 print(f"{i+1}. {self.filter_string(audio)} DOWNLOAD")
@@ -70,7 +70,7 @@ class DownloadAudio:
         >>> filter_string(audio_info)
         'audio/mp4' '160kbps'
         """
-        return audio_info.mime_type + "  "+ audio_info.abr
+        return f"{audio_info.mime_type} {audio_info.abr}"
     
     
     def select_average_bitrate(self, audios: list):

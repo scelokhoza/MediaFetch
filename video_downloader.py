@@ -92,7 +92,7 @@ class DownloadVideo:
         >>> filter_string(video_info)
         'video/mp4' '1280x720'
         """
-        return video_info.mime_type + "  "+ video_info.resolution       
+        return f"{video_info.mime_type} {video_info.resolution}"       
     
     
     def select_resolution_option(self, videos: list):
