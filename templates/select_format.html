@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Select Video Format</title>
+    <title>Select Format</title>
 </head>
 <body>
-    <h1>Select Video Format</h1>
-    <form action="/select_format?url={{ url }}" method="post">
-        {% for video in videos %}
-        <div>
-            <input type="radio" id="{{ video.resolution }}" name="resolution" value="{{ video.resolution }}" required>
-            <label for="{{ video.resolution }}">{{ video.mime_type }} - {{ video.resolution }}</label>
-        </div>
-        {% endfor %}
-        <button type="submit">Download</button>
+    <h1>Select Format</h1>
+    <form method="post" id="download-form">
+        <h2>Video Formats</h2>
+        <select name="video_resolution">
+            {% for video in videos %}
+                <option value="{{ video.resolution }}">{{ video.resolution }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Download Video</button>
     </form>
+
+    <form method="post" id="download-form">
+        <h2>Audio Formats</h2>
+        <select name="audio_bitrate">
+            {% for audio in audios %}
+                <option value="{{ audio.abr }}">{{ audio.abr }} kbps</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Download Audio</button>
+    </form>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
+
+
