@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Select Video Format</title>
+</head>
+<body>
+    <h1>Select Video Format</h1>
+    <form action="/select_format?url={{ url }}" method="post">
+        {% for video in videos %}
+        <div>
+            <input type="radio" id="{{ video.resolution }}" name="resolution" value="{{ video.resolution }}" required>
+            <label for="{{ video.resolution }}">{{ video.mime_type }} - {{ video.resolution }}</label>
+        </div>
+        {% endfor %}
+        <button type="submit">Download</button>
+    </form>
+</body>
+</html>
