@@ -128,7 +128,7 @@ class DownloadVideo:
     def download_video(self):
         """
         This method downloads the selected video from the YouTube URL to the specified download path.
-
+        
         Args:
         self (DownloadVideo): An instance of the DownloadVideo class.
 
