@@ -2,34 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Select Format</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Select Format</h1>
-    <form method="post" id="download-form">
-        <h2>Video Formats</h2>
-        <select name="video_resolution">
-            {% for video in videos %}
-                <option value="{{ video.resolution }}">{{ video.resolution }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Download Video</button>
-    </form>
-
-    <form method="post" id="download-form">
-        <h2>Audio Formats</h2>
-        <select name="audio_bitrate">
-            {% for audio in audios %}
-                <option value="{{ audio.abr }}">{{ audio.abr }} kbps</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Download Audio</button>
-    </form>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <div class="container">
+        <h1>Select Format</h1>
+        <form method="POST">
+            <label for="format_id">Choose Video Format:</label>
+            <select name="format_id" id="format_id">
+                {% for format in formats %}
+                <option value="{{ format.format_id }}">
+                    {{ format.ext }} - {{ format.resolution }} - {{ format.fps }} fps - {{ format.vcodec }}
+                </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Download Video</button>
+        </form>
+    </div>
 </body>
 </html>
-
-
