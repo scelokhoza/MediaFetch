@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-class DownloadVideo:
+class DownloadMedia:
     def __init__(self, url):
         self.url = url
         self.download_path = os.path.join(os.path.expanduser('~'), 'Downloads')
@@ -35,6 +35,7 @@ class DownloadVideo:
         except Exception as e:
             return f"Error: {e}"
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -43,16 +44,18 @@ def index():
             return redirect(url_for('select_format', url=url))
     return render_template('index.html')
 
+
 @app.route('/select_format', methods=['GET', 'POST'])
 def select_format():
     url = request.args.get('url')
-    download_video_obj = DownloadVideo(url)
+    download_video_obj = DownloadMedia(url)
     formats = download_video_obj.get_videos_only()
     if request.method == 'POST':
         format_id = request.form.get('format_id')
         message = download_video_obj.download_video(format_id)
         return render_template('result.html', message=message)
     return render_template('select_format.html', formats=formats, url=url)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
