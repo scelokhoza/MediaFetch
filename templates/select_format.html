@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Select Format</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="./asserts/just-logo.jpg" type="image/x-icon">
 </head>
 <body>
+    <div><img src="./asserts/IMG_20240709_134249.jpg" alt="Logo" class="logo"></div>
+
     <div class="container">
         <h1>Select Format</h1>
-        <form method="POST">
-            <label for="format_id">Choose Video Format:</label>
-            <select name="format_id" id="format_id">
-                {% for format in formats %}
-                <option value="{{ format.format_id }}">
-                    {{ format.ext }} - {{ format.resolution }} - {{ format.fps }} fps - {{ format.vcodec }}
-                </option>
-                {% endfor %}
-            </select>
+        <form >
+            <label class="format_id" for="format_id">Choose Video Format:</label>
+
+            <label class="radio-container">
+                1080p 
+                <input type="radio" name="mediaQuality" value="1080p">
+                <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+                720p 
+                <input type="radio" name="mediaQuality" value="720p">
+                <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+                480p 
+                <input type="radio" name="mediaQuality" value="480p">
+                <span class="checkmark"></span>
+            </label>
+
             <button type="submit">Download Video</button>
         </form>
     </div>
 </body>
 </html>
+

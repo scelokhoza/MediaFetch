@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Download Video and Audio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Media Fetch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="./asserts/just-logo.jpg" type="image/x-icon">
+  
 </head>
 <body>
+    <div><img src="./asserts/IMG_20240709_134249.jpg" alt="Logo" class="logo"></div>
+    
+    <div id="main-heading">
+        <h1>MEDIA  FETCH</h1>
+    </div>
+
     <div class="container">
-        <h1>Download Video and Audio</h1>
+        <h2>Download Video/Audio</h2>
         <form method="POST">
-            <label for="url">Video/Audio URL:</label>
+            <label class="url" for="url">URL:</label>
             <input type="text" id="url" name="url" required>
             <button type="submit">Submit</button>
         </form>
