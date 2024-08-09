@@ -21,13 +21,14 @@ class DownloadMedia:
                 formats = info_dict.get('formats', [])
                 print(f"Available formats for {media_type}: {formats}") 
                 if media_type == 'audio':
-                    formats = [f for f in formats if f.get('acodec') != 'none' and f.get('acodec') is not None]
-                else:
-                    formats = [f for f in formats if f.get('vcodec') != 'none' and f.get('vcodec') is not None]
+                    formats = [f for f in formats if f.get('acodec') != 'none' and f.get('acodec') is not None and (f.get('filesize') or f.get('filesize_approx'))]
+                else:  
+                    formats = [f for f in formats if f.get('vcodec') != 'none' and f.get('vcodec') is not None and (f.get('filesize') or f.get('filesize_approx'))]
                 print(f"Filtered formats for {media_type}: {formats}") 
         except Exception as e:
             print(f"Error: {e}")
         return formats
+
 
 
 
