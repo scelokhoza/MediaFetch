@@ -5,11 +5,36 @@ import os
 app = Flask(__name__)
 
 class DownloadMedia:
+    """
+    A class to handle downloading media from a given URL using yt-dlp.
+
+    Attributes:
+        url (str): The URL of the media to download.
+        download_path (str): The path where downloaded media will be saved.
+    """
+
     def __init__(self, url):
+        """
+        Initializes the DownloadMedia instance with the specified URL.
+
+        Args:
+            url (str): The URL of the media to be downloaded.
+        """
         self.url = url
         self.download_path = os.path.join(os.path.expanduser('~'), 'Downloads')
 
     def get_formats(self, media_type):
+        """
+        Retrieves available formats for the specified media type (audio or video).
+
+        Args:
+            media_type (str): The type of media to retrieve formats for. 
+                              Should be 'audio' or 'video'.
+
+        Returns:
+            list: A list of formats that are available for download, filtered to include
+                  only those with a file size and excluding 'webm' formats.
+        """
         ydl_opts = {
             'listformats': True,
             'quiet': True
@@ -20,6 +45,7 @@ class DownloadMedia:
                 info_dict = ydl.extract_info(self.url, download=False)
                 formats = info_dict.get('formats', [])
                 print(f"Available formats for {media_type}: {formats}") 
+                
                 if media_type == 'audio':
                     formats = [
                         f for f in formats 
@@ -40,9 +66,19 @@ class DownloadMedia:
         except Exception as e:
             print(f"Error: {e}")
         return formats
-
+    
 
     def download_media(self, format_id):
+        """
+        Downloads the media using the specified format ID.
+
+        Args:
+            format_id (str): The format ID of the media to download.
+
+        Returns:
+            str: A message indicating the download status, including the download path
+                 or an error message if the download fails.
+        """
         ydl_opts = {
             'format': format_id,
             'outtmpl': os.path.join(self.download_path, '%(title)s.%(ext)s')
@@ -53,6 +89,7 @@ class DownloadMedia:
             return f"Downloaded media to {self.download_path}"
         except Exception as e:
             return f"Error: {e}"
+
         
 
 @app.route('/', methods=['GET', 'POST'])
@@ -63,6 +100,7 @@ def index():
         if url:
             return redirect(url_for('select_format', url=url, media_type=media_type))
     return render_template('index.html')
+
 
 @app.route('/select_format', methods=['GET', 'POST'])
 def select_format():
