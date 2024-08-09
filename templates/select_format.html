@@ -12,17 +12,20 @@
     <div class="container">
         <h1>Select Format</h1>
         <form method="POST">
-            <label for="format_id">Choose Video Format:</label>
+            <label for="format_id">Choose {{ media_type.capitalize() }} Format:</label>
             <select name="format_id" id="format_id">
-                {% for format in formats %}
-                <option value="{{ format.format_id }}">
-                    {{ format.ext }} - {{ format.resolution }} - {{ format.fps }} fps - {{ format.vcodec }}
-                </option>
-                {% endfor %}
+                {% if formats %}
+                    {% for format in formats %}
+                    <option value="{{ format.format_id }}">
+                        {{ format.ext }} - {{ format.resolution if media_type == 'video' else format.acodec }} - {{ format.fps if media_type == 'video' else format.abr }} - {{ format.vcodec if media_type == 'video' else format.acodec }}
+                    </option>
+                    {% endfor %}
+                {% else %}
+                    <option disabled>No formats available</option>
+                {% endif %}
             </select>
-            <button type="submit">Download Video</button>
-        </form>
+            <button type="submit">Download {{ media_type.capitalize() }}</button>
+        </form>        
     </div>
 </body>
 </html>
-

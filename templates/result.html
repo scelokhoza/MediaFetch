@@ -9,12 +9,10 @@
 <body>
     <div><img src="static/asserts/IMG_20240709_134249.jpg" alt="Logo" class="logo"></div>
 
-
     <div class="container">
         <h1>Result</h1>
-        <p>{{ Your download is now ready. }}</p>
-        <!-- <a class="" href="{{ url_for('index') }}">Go Back</a> -->
-        <button href="{{ url_for('index') }}">Go Back</button>
+        <p>{{ message }}</p>
+        <a href="{{ url_for('index') }}" class="button">Go Back</a>
     </div>
 </body>
 </html>
