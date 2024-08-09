@@ -21,15 +21,25 @@ class DownloadMedia:
                 formats = info_dict.get('formats', [])
                 print(f"Available formats for {media_type}: {formats}") 
                 if media_type == 'audio':
-                    formats = [f for f in formats if f.get('acodec') != 'none' and f.get('acodec') is not None and (f.get('filesize') or f.get('filesize_approx'))]
-                else:  
-                    formats = [f for f in formats if f.get('vcodec') != 'none' and f.get('vcodec') is not None and (f.get('filesize') or f.get('filesize_approx'))]
-                print(f"Filtered formats for {media_type}: {formats}") 
+                    formats = [
+                        f for f in formats 
+                        if f.get('acodec') != 'none' 
+                        and f.get('acodec') is not None 
+                        and (f.get('filesize') or f.get('filesize_approx')) 
+                        and 'webm' not in f.get('ext', '') 
+                    ]
+                else: 
+                    formats = [
+                        f for f in formats 
+                        if f.get('vcodec') != 'none' 
+                        and f.get('vcodec') is not None 
+                        and (f.get('filesize') or f.get('filesize_approx')) 
+                        and 'webm' not in f.get('ext', '') 
+                    ]
+                print(f"Filtered formats for {media_type}: {formats}")  
         except Exception as e:
             print(f"Error: {e}")
         return formats
-
-
 
 
     def download_media(self, format_id):
@@ -43,6 +53,7 @@ class DownloadMedia:
             return f"Downloaded media to {self.download_path}"
         except Exception as e:
             return f"Error: {e}"
+        
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
