@@ -2,7 +2,15 @@
 
 < A simple program to download videos and audio from differnt webistes like youtube, linkeding, x, instagram and tiktok >
 
-< Add an optional screenshot of your project below >
+![home-page](https://github.com/user-attachments/assets/cfcf09ba-139b-4294-8728-ecaf2bd3e5cc)
+
+![selection-page](https://github.com/user-attachments/assets/4ca445d1-5d41-4623-966e-51efa8e9a7cb)
+
+![result-page](https://github.com/user-attachments/assets/f8b07ec8-609b-4dfc-ad60-a275b183a1af)
+
+
+
+
 
 
 **Table of Contents**
@@ -40,6 +48,12 @@ $ cd MediaFetch
 $ pip install -r requirements.txt
 $ python3 download_media.py
 ```
+You should see an ouput like this in your terminal:
+![execute](https://github.com/user-attachments/assets/670798a9-cc94-4aab-98a0-1f307e245906)
+
+Copy and paste the [`http:127.0.0.1:5000`] link to your browser of choice
+
+
 
 For more examples, please refer to the project's [Wiki](wiki) or [documentation page](docs).
 
