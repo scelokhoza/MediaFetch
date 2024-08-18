@@ -85,3 +85,9 @@ class DownloadMedia:
             return f"Downloaded media to {self.download_path}"
         except Exception as e:
             return f"Error: {e}"
+
+
+
+if __name__ == "__main__":
+    downloader = DownloadMedia('https://www.youtube.com/watch?v=is9hkpE-rlE')
+    print(downloader.get_formats('audio'))
