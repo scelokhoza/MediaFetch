@@ -1,12 +1,16 @@
 # MediaFetch
 
-< A simple program to download videos and audio from differnt webistes like youtube, linkeding, x, instagram and tiktok >
+< MediaFetch is a program that can download videos and audios from differnt webistes like youtube, linkeding, x, instagram and tiktok using their url and also allows you to search for a song then download it from there >
 
-![home-page](https://github.com/user-attachments/assets/cfcf09ba-139b-4294-8728-ecaf2bd3e5cc)
+========================================HOME PAGE==========================================
+![home-page](https://github.com/user-attachments/assets/57da7b39-eda0-4d0e-9404-68897612c8a7)
 
+========================================DOWNLOAD BY URL==========================================
 ![selection-page](https://github.com/user-attachments/assets/4ca445d1-5d41-4623-966e-51efa8e9a7cb)
 
-![result-page](https://github.com/user-attachments/assets/f8b07ec8-609b-4dfc-ad60-a275b183a1af)
+========================================SEARCH AND DOWNLOAD==========================================
+![search](https://github.com/user-attachments/assets/2992294d-b018-4202-9eba-f75c8cff7d52)
+
 
 
 
@@ -65,6 +69,7 @@ For more examples, please refer to the project's [Wiki](wiki) or [documentation 
 - [Flask](https://flask.palletsprojects.com/en/3.0.x/): ![Flask](flask)
 - [HTML](https://html.com/): ![HTML]()
 - [CSS](https://css-tricks.com/): ![CSS]()
+- [AJAX](https://api.jquery.com/jQuery.ajax/): ![AJAX](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cleanpng.com%2Fpng-javascript-programming-language-ajax-2491752%2F&psig=AOvVaw3g1vGLPqNSdLJ6YSc2T5YA&ust=1724076643987000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjUtJXc_ocDFQAAAAAdAAAAABAE)
 
 ## Features
 
