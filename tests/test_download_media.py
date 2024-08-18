@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from media_services.download_media import DownloadMedia
 
 
@@ -8,9 +8,8 @@ class TestMediaDownload(unittest.TestCase):
         
     @patch('yt_dlp.YoutubeDL')
     def test_formats_audio(self, mock_youtube_dl):
-        
-        self.url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
-        self.downloader = DownloadMedia(self.url)
+        url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
+        self.downloader = DownloadMedia(url)
         
         mock_info_dict: dict = {
             'formats': [
@@ -32,9 +31,8 @@ class TestMediaDownload(unittest.TestCase):
     
     @patch('yt_dlp.YoutubeDL')
     def test_get_formats(self, mock_youtube_dl):
-        
-        self.url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
-        self.downloader = DownloadMedia(self.url)
+        url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
+        self.downloader = DownloadMedia(url)
         
         mock_info_dict = {
             'formats': [
@@ -54,8 +52,8 @@ class TestMediaDownload(unittest.TestCase):
     
     @patch('yt_dlp.YoutubeDL')
     def test_get_formats_error(self, mock_youtube_dl):
-        self.url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
-        self.downloader = DownloadMedia(self.url)
+        url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
+        self.downloader = DownloadMedia(url)
         
         mock_ydl = mock_youtube_dl.return_value.__enter__.return_value
         mock_ydl.extract_info.side_effect = Exception("Test error")
@@ -66,8 +64,8 @@ class TestMediaDownload(unittest.TestCase):
     
     @patch('yt_dlp.YoutubeDL')
     def test_get_formats_no_formats(self, mock_youtube_dl):
-        self.url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
-        self.downloader = DownloadMedia(self.url)
+        url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
+        self.downloader = DownloadMedia(url)
         
         mock_info_dict = {'formats': []}
         

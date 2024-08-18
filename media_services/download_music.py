@@ -71,7 +71,7 @@ class DownloadMusic:
             audios (list): A list of available audio formats.
 
         Returns:
-            dict: The audio format with the highest average bitrate, or None if no formats are available.
+            dict: Audio format with the highest av bitrate, or None if no formats available.
         """
         if not audios:
             return None
