@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Search Results</h2>     
+        <h2>Search Results</h2>
         <form id="downloadForm" action="/handle_button" method="POST">
             <input type="hidden" id="videoId" name="video_id">
             <ul>
@@ -24,7 +24,7 @@
     <script>
         function setVideoIdAndSubmit(button) {
             document.getElementById("videoId").value = button.value;
-            
+
             document.getElementById("downloadForm").submit();
         }
     </script>

@@ -11,7 +11,7 @@ class DownloadMusic:
 
     Methods:
         get_audios_only() -> list:
-            Retrieves available audio formats for the given URL, filtering out formats 
+            Retrieves available audio formats for the given URL, filtering out formats
             that do not have a valid audio codec, size, or are in 'webm' format.
 
         select_average_bitrate(audios) -> dict:
@@ -39,7 +39,7 @@ class DownloadMusic:
         """
         Retrieves available audio formats for the given URL.
 
-        Filters the formats to include only those with a valid audio codec, file size, 
+        Filters the formats to include only those with a valid audio codec, file size,
         and excludes formats in 'webm' format.
 
         Returns:
@@ -55,11 +55,11 @@ class DownloadMusic:
             info_dict = ydl.extract_info(self.url, download=False)
             formats = info_dict.get('formats', [])
             formats = [
-                f for f in formats 
-                if f.get('acodec') != 'none' 
-                and f.get('acodec') is not None 
-                and (f.get('filesize') or f.get('filesize_approx')) 
-                and 'webm' not in f.get('ext', '') 
+                f for f in formats
+                if f.get('acodec') != 'none'
+                and f.get('acodec') is not None
+                and (f.get('filesize') or f.get('filesize_approx'))
+                and 'webm' not in f.get('ext', '')
             ]
             return formats
 

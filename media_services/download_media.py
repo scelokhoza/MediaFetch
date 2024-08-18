@@ -26,7 +26,7 @@ class DownloadMedia:
         Retrieves available formats for the specified media type (audio or video).
 
         Args:
-            media_type (str): The type of media to retrieve formats for. 
+            media_type (str): The type of media to retrieve formats for.
                               Should be 'audio' or 'video'.
 
         Returns:
@@ -42,27 +42,27 @@ class DownloadMedia:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info_dict = ydl.extract_info(self.url, download=False)
                 formats = info_dict.get('formats', [])
-                
+
                 if media_type == 'audio':
                     formats = [
-                        f for f in formats 
-                        if f.get('acodec') != 'none' 
-                        and f.get('acodec') is not None 
-                        and (f.get('filesize') or f.get('filesize_approx')) 
-                        and 'webm' not in f.get('ext', '') 
+                        f for f in formats
+                        if f.get('acodec') != 'none'
+                        and f.get('acodec') is not None
+                        and (f.get('filesize') or f.get('filesize_approx'))
+                        and 'webm' not in f.get('ext', '')
                     ]
-                else: 
+                else:
                     formats = [
-                        f for f in formats 
-                        if f.get('vcodec') != 'none' 
-                        and f.get('vcodec') is not None 
-                        and (f.get('filesize') or f.get('filesize_approx')) 
-                        and 'webm' not in f.get('ext', '') 
+                        f for f in formats
+                        if f.get('vcodec') != 'none'
+                        and f.get('vcodec') is not None
+                        and (f.get('filesize') or f.get('filesize_approx'))
+                        and 'webm' not in f.get('ext', '')
                     ]
         except Exception as e:
             return f"Error: {e}"
         return formats
-    
+
 
     def download_media(self, format_id):
         """

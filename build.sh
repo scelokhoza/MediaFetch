@@ -2,12 +2,12 @@
 
 set -e
 
-VERSION_FILE=".default_version" 
+VERSION_FILE=".default_version"
 
 if [ -f "$VERSION_FILE" ]; then
     DEFAULT_VERSION=$(cat "$VERSION_FILE")
 else
-    DEFAULT_VERSION="0.2.0"  
+    DEFAULT_VERSION="0.2.0"
 fi
 
 VERSION=${1:-$DEFAULT_VERSION}

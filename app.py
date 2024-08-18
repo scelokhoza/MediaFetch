@@ -1,6 +1,6 @@
 import os
-from googleapiclient.discovery import build
 from flask import Flask, render_template, request, redirect, url_for
+from googleapiclient.discovery import build
 from media_services.download_media import DownloadMedia
 from media_services.download_music import DownloadMusic
 
@@ -49,9 +49,9 @@ def select_format():
         The rendered template for format selection, or the result after downloading the media.
     """
     url = request.args.get('url')
-    media_type = request.args.get('media_type')  
+    media_type = request.args.get('media_type')
     download_media_obj = DownloadMedia(url)
-    formats = download_media_obj.get_formats(media_type)  
+    formats = download_media_obj.get_formats(media_type)
     if request.method == 'POST':
         format_id = request.form.get('format_id')
         message = download_media_obj.download_media(format_id)
@@ -78,7 +78,7 @@ def search():
                 q=query,
                 maxResults=5,
                 type="video",
-                videoCategoryId="10" 
+                videoCategoryId="10"
             )
             response = search_request.execute()
 
@@ -103,12 +103,12 @@ def handle_button():
     Returns:
         The rendered template for displaying the download result.
     """
-    video_id = request.form['video_id'] 
+    video_id = request.form['video_id']
     url = f"https://www.youtube.com/watch?v={video_id}"
-    
+
     downloader = DownloadMusic(url)
     file_path = downloader.download_audio()
-    
+
     return render_template('result.html', message=file_path)
 
 
