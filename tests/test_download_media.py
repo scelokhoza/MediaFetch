@@ -51,6 +51,32 @@ class TestMediaDownload(unittest.TestCase):
         self.assertEqual(len(formats), 1)
         self.assertEqual(formats[0]['vcodec'], 'h264')
         
+    
+    @patch('yt_dlp.YoutubeDL')
+    def test_get_formats_error(self, MockYoutubeDL):
+        self.url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
+        self.downloader = DownloadMedia(self.url)
+        
+        mock_ydl = MockYoutubeDL.return_value.__enter__.return_value
+        mock_ydl.extract_info.side_effect = Exception("Test error")
+
+        result = self.downloader.get_formats('audio')
+        self.assertEqual(result, "Error: Test error")
+        
+    
+    @patch('yt_dlp.YoutubeDL')
+    def test_get_formats_no_formats(self, MockYoutubeDL):
+        self.url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
+        self.downloader = DownloadMedia(self.url)
+        
+        mock_info_dict = {'formats': []}
+        
+        mock_ydl = MockYoutubeDL.return_value.__enter__.return_value
+        mock_ydl.extract_info.return_value = mock_info_dict
+
+        formats = self.downloader.get_formats('audio')
+
+        self.assertEqual(formats, [])
         
         
 
