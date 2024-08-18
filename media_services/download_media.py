@@ -1,6 +1,5 @@
-import yt_dlp
 import os
-
+import yt_dlp
 
 
 class DownloadMedia:
@@ -43,7 +42,6 @@ class DownloadMedia:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info_dict = ydl.extract_info(self.url, download=False)
                 formats = info_dict.get('formats', [])
-                print(f"Available formats for {media_type}: {formats}") 
                 
                 if media_type == 'audio':
                     formats = [
@@ -61,9 +59,8 @@ class DownloadMedia:
                         and (f.get('filesize') or f.get('filesize_approx')) 
                         and 'webm' not in f.get('ext', '') 
                     ]
-                print(f"Filtered formats for {media_type}: {formats}")  
         except Exception as e:
-            print(f"Error: {e}")
+            return f"Error: {e}"
         return formats
     
 

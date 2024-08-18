@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Media Fetch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="shortcut icon" href="static/asserts/just-logo.jpg" type="image/x-icon">
 </head>
 <body>
@@ -15,19 +15,22 @@
     </div>
 
     <div class="container">
-        <h2>Download Video/Audio</h2>
+        <h2>Download Video/Audio or Search for Music</h2>
         <form method="POST">
-            <label class="url" for="url">URL:</label>
-            <input type="text" id="url" name="url" required>
-            
-            <div>
-                <label><input type="radio" name="media_type" value="video" checked> Video</label>
-                <label><input type="radio" name="media_type" value="audio"> Audio</label>
+
+            <div id="url-input">
+                <label class="url" for="url">URL:</label>
+                <input type="text" id="url" name="url">
+                
+                <div>
+                    <label><input type="radio" name="media_type" value="video" checked> Video</label>
+                    <label><input type="radio" name="media_type" value="audio"> Audio</label>
+                </div>
             </div>
             
-            <button type="submit">Submit</button>
+            <button type="submit" name="download">Submit</button>
+            <button type="submit" name="search">Search for Music</button>
         </form>
     </div>
 </body>
 </html>
-
