@@ -66,19 +66,20 @@ For more examples, please refer to the project's [Wiki](wiki) or [documentation 
 < MediaFetch > uses the following technologies and tools:
 
 - [Python](https://www.python.org/): ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-- [Flask](https://flask.palletsprojects.com/en/3.0.x/): ![Flask](flask)
-- [HTML](https://html.com/): ![HTML]()
-- [CSS](https://css-tricks.com/): ![CSS]()
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/): ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+- [HTML](https://html.com/): ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+- [CSS](https://css-tricks.com/): ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 - [AJAX](https://api.jquery.com/jQuery.ajax/): ![AJAX](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cleanpng.com%2Fpng-javascript-programming-language-ajax-2491752%2F&psig=AOvVaw3g1vGLPqNSdLJ6YSc2T5YA&ust=1724076643987000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjUtJXc_ocDFQAAAAAdAAAAABAE)
 
 ## Features
 
 < MediaFetch > currently has the following set of features:
 
-- Can download [Audio]()
-- Can download [Video]()
+- Can download [Audio]() by url from the sites below
+- Can download [Video]() by url from the sites below
+- Allows you to search and download a song of your choice
 
-< MediaFetch can download from these sites for now>
+< MediaFetch can download audio/video by url from these sites for now>
 
 - Support for [Tiktok]()
 - Support for [Facebook]()
