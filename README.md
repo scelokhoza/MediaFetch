@@ -1,6 +1,6 @@
 # MediaFetch
 
-< [MediaFetch](#https://mediafetch.onrender.com) is a program that can download videos and audios from differnt webistes like youtube, linkeding, x, instagram and tiktok using their url and also allows you to search for a song then download it from there >
+[MediaFetch](https://mediafetch.onrender.com) is a program that can download videos and audios from differnt webistes like youtube, linkeding, x, instagram and tiktok using their url and also allows you to search for a song then download it from there.
 
 ========================================HOME PAGE==========================================
 ![home-page](https://github.com/user-attachments/assets/57da7b39-eda0-4d0e-9404-68897612c8a7)
