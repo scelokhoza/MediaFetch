@@ -69,7 +69,7 @@ For more examples, please refer to the project's [Wiki](wiki) or [documentation 
 - [Flask](https://flask.palletsprojects.com/en/3.0.x/): ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 - [HTML](https://html.com/): ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 - [CSS](https://css-tricks.com/): ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-- [AJAX](https://api.jquery.com/jQuery.ajax/): ![AJAX](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cleanpng.com%2Fpng-javascript-programming-language-ajax-2491752%2F&psig=AOvVaw3g1vGLPqNSdLJ6YSc2T5YA&ust=1724076643987000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjUtJXc_ocDFQAAAAAdAAAAABAE)
+- [AJAX](https://api.jquery.com/jQuery.ajax/): ![AJAX](https://img.shields.io/badge/AJAX-1572B6?style=for-the-badge&logo=ajax&logoColor=white)
 
 ## Features
 
@@ -81,11 +81,11 @@ For more examples, please refer to the project's [Wiki](wiki) or [documentation 
 
 < MediaFetch can download audio/video by url from these sites for now>
 
-- Support for [Tiktok]()
-- Support for [Facebook]()
-- Support for [X]()
-- Support for [Youtube]()
-- Support for [Linkedin]()
+- Support for [Tiktok](https://img.shields.io/badge/tiktok-3670A0?style=for-the-badge&logo=tiktok&logoColor=ffdd54)
+- Support for [Facebook](https://img.shields.io/badge/facebook-3670A0?style=for-the-badge&logo=facebook&logoColor=ffdd54)
+- Support for [X](https://img.shields.io/badge/x-3670A0?style=for-the-badge&logo=x&logoColor=ffdd54)
+- Support for [Youtube](https://img.shields.io/badge/youtube-3670A0?style=for-the-badge&logo=youtube&logoColor=ffdd54)
+- Support for [Linkedin](https://img.shields.io/badge/linkedin-3670A0?style=for-the-badge&logo=linkedin&logoColor=ffdd54)
   
 ## Contributing
 
