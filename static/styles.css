@@ -217,19 +217,22 @@ ul {
 }
 
 li {
-    margin: 15px 0; /* Increased margin for more spacing between items */
-    font-size: 30px; /* Increased font size */
+    margin: 15px 0; 
+    font-size: 15px; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 8px 0; 
 }
 
-a {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 30px; /* Larger font size for the links */
-    font-weight: bold; /* Make the text bold */
+li button {
+    margin-left: 10px; 
+    padding: 6px 12px; 
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-a:hover {
-    text-decoration: underline;
+li button:hover {
+    background-color: #0056b3; 
 }
 
 

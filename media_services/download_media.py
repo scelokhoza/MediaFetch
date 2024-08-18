@@ -11,7 +11,7 @@ class DownloadMedia:
         download_path (str): The path where downloaded media will be saved.
     """
 
-    def __init__(self, url):
+    def __init__(self, url) -> None:
         """
         Initializes the DownloadMedia instance with the specified URL.
 

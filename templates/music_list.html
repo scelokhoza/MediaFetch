@@ -13,7 +13,7 @@
             <ul>
                 {% for video in videos %}
                     <li>
-                        {{ video.title }}
+                        <span>{{ video.title }}</span>
                         <button type="button" value="{{ video.video_id }}" onclick="setVideoIdAndSubmit(this)">Download</button>
                     </li>
                 {% endfor %}
@@ -23,10 +23,8 @@
 
     <script>
         function setVideoIdAndSubmit(button) {
-            // Set the hidden input field to the clicked button's value (video_id)
             document.getElementById("videoId").value = button.value;
             
-            // Submit the form
             document.getElementById("downloadForm").submit();
         }
     </script>
