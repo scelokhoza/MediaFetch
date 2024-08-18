@@ -1,5 +1,6 @@
 import os
 import yt_dlp
+from helper import filter_audio_formats
 
 class DownloadMusic:
     """
@@ -15,13 +16,15 @@ class DownloadMusic:
             that do not have a valid audio codec, size, or are in 'webm' format.
 
         select_average_bitrate(audios) -> dict:
-            Selects the audio format with the highest average bitrate from a list of available audio formats.
+            Selects the audio format with the highest average bitrate from
+            a list of available audio formats.
 
         is_downloadable(audio) -> bool:
             Checks if the given audio format is valid and downloadable.
 
         download_audio() -> str or None:
-            Downloads the audio format with the highest average bitrate and saves it to the specified download path.
+            Downloads the audio format with the highest average bitrate and
+            saves it to the specified download path.
             Returns the file path of the downloaded media if successful, or None if an error occurs.
     """
 
@@ -54,13 +57,7 @@ class DownloadMusic:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(self.url, download=False)
             formats = info_dict.get('formats', [])
-            formats = [
-                f for f in formats
-                if f.get('acodec') != 'none'
-                and f.get('acodec') is not None
-                and (f.get('filesize') or f.get('filesize_approx'))
-                and 'webm' not in f.get('ext', '')
-            ]
+            formats = filter_audio_formats(formats)
             return formats
 
     def select_average_bitrate(self, audios):
@@ -122,7 +119,3 @@ class DownloadMusic:
 if __name__ == '__main__':
     downloader = DownloadMusic("https://www.youtube.com/watch?v=YOUR_VIDEO_ID")
     downloader.download_audio()
-
-
-
-

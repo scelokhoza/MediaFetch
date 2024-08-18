@@ -1,5 +1,6 @@
 import os
 import yt_dlp
+from helper import filter_audio_formats
 
 
 class DownloadMedia:
@@ -44,13 +45,7 @@ class DownloadMedia:
                 formats = info_dict.get('formats', [])
 
                 if media_type == 'audio':
-                    formats = [
-                        f for f in formats
-                        if f.get('acodec') != 'none'
-                        and f.get('acodec') is not None
-                        and (f.get('filesize') or f.get('filesize_approx'))
-                        and 'webm' not in f.get('ext', '')
-                    ]
+                    formats = filter_audio_formats(formats)
                 else:
                     formats = [
                         f for f in formats
@@ -73,7 +68,7 @@ class DownloadMedia:
 
         Returns:
             str: A message indicating the download status, including the download path
-                 or an error message if the download fails.
+                or an error message if the download fails.
         """
         ydl_opts = {
             'format': format_id,
@@ -83,8 +78,16 @@ class DownloadMedia:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([self.url])
             return f"Downloaded media to {self.download_path}"
+        except yt_dlp.utils.DownloadError as e:
+            return f"Download error: {e}"
+        except yt_dlp.utils.ExtractorError as e:
+            return f"Extractor error: {e}"
+        except yt_dlp.utils.UnavailableVideoError as e:
+            return f"Video unavailable: {e}"
+        except OSError as e:
+            return f"File system error: {e}"
         except Exception as e:
-            return f"Error: {e}"
+            return f"An unexpected error occurred: {e}"
 
 
 
