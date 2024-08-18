@@ -1,4 +1,4 @@
-from pytube import YouTube
+import os
 from googleapiclient.discovery import build
 from media_services.download_media import DownloadMedia
 from media_services.download_music import DownloadMusic
@@ -9,7 +9,8 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 
-API_KEY = 'AIzaSyA183e8JN05L1A3IFBVtxTtHNk7jKsL2iI'
+API_KEY = os.getenv('API_KEY')
+
 youtube = build('youtube', 'v3', developerKey=API_KEY)
         
 
