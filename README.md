@@ -61,6 +61,13 @@ Copy and paste the [`http:127.0.0.1:5000`] link to your browser of choice
 
 For more examples, please refer to the project's [Wiki](wiki) or [documentation page](docs).
 
+
+## To Test
+
+To run all the unittests: ```sh $ python3 -m unittest tests/test_download_media.py```
+To run a specific unittests, e.g test_formats_audio: ```sh $ python3 -m unittest tests.test_download_media.TestMediaDownload.test_formats_audio```
+
+
 ## Technologies
 
 < MediaFetch > uses the following technologies and tools:
