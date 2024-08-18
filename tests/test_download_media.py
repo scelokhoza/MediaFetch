@@ -7,7 +7,7 @@ from media_services.download_media import DownloadMedia
 class TestMediaDownload(unittest.TestCase):
         
     @patch('yt_dlp.YoutubeDL')
-    def test_formats_audio(self, MockYoutubeDL):
+    def test_formats_audio(self, mock_youtube_dl):
         
         self.url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
         self.downloader = DownloadMedia(self.url)
@@ -20,7 +20,7 @@ class TestMediaDownload(unittest.TestCase):
             ]
         }
         
-        mock_ydl = MockYoutubeDL.return_value.__enter__.return_value
+        mock_ydl = mock_youtube_dl.return_value.__enter__.return_value
         mock_ydl.extract_info.return_value = mock_info_dict
 
         formats = self.downloader.get_formats('audio')
@@ -31,7 +31,7 @@ class TestMediaDownload(unittest.TestCase):
         
     
     @patch('yt_dlp.YoutubeDL')
-    def test_get_formats(self, MockYoutubeDL):
+    def test_get_formats(self, mock_youtube_dl):
         
         self.url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
         self.downloader = DownloadMedia(self.url)
@@ -43,7 +43,7 @@ class TestMediaDownload(unittest.TestCase):
                 {'vcodec': 'vp9', 'filesize_approx': 3000, 'ext': 'webm'}
             ]
         }
-        mock_ydl = MockYoutubeDL.return_value.__enter__.return_value
+        mock_ydl = mock_youtube_dl.return_value.__enter__.return_value
         mock_ydl.extract_info.return_value = mock_info_dict
 
         formats = self.downloader.get_formats('video')
@@ -53,11 +53,11 @@ class TestMediaDownload(unittest.TestCase):
         
     
     @patch('yt_dlp.YoutubeDL')
-    def test_get_formats_error(self, MockYoutubeDL):
+    def test_get_formats_error(self, mock_youtube_dl):
         self.url = 'https://www.tiktok.com/@polo_vivo1/video/7309428046522502405'
         self.downloader = DownloadMedia(self.url)
         
-        mock_ydl = MockYoutubeDL.return_value.__enter__.return_value
+        mock_ydl = mock_youtube_dl.return_value.__enter__.return_value
         mock_ydl.extract_info.side_effect = Exception("Test error")
 
         result = self.downloader.get_formats('audio')
@@ -65,13 +65,13 @@ class TestMediaDownload(unittest.TestCase):
         
     
     @patch('yt_dlp.YoutubeDL')
-    def test_get_formats_no_formats(self, MockYoutubeDL):
+    def test_get_formats_no_formats(self, mock_youtube_dl):
         self.url = 'https://www.youtube.com/watch?v=is9hkpE-rlE'
         self.downloader = DownloadMedia(self.url)
         
         mock_info_dict = {'formats': []}
         
-        mock_ydl = MockYoutubeDL.return_value.__enter__.return_value
+        mock_ydl = mock_youtube_dl.return_value.__enter__.return_value
         mock_ydl.extract_info.return_value = mock_info_dict
 
         formats = self.downloader.get_formats('audio')
