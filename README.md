@@ -129,4 +129,4 @@ The < MediaFetch > development team really appreciates and thanks the time and e
 
 ## License
 
-< MediaFetch > is distributed under the < unlicense > license. See [`LICENSE`](https://unlicense.org) for more details.
+< MediaFetch > is distributed under the [`BSD-2-Clause license`] license. See [`LICENSE`](https://unlicense.org) for more details.
