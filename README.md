@@ -29,7 +29,7 @@
 - [Change log](#change-log)
 - [License](#license)
 
-## Installation
+## Installation and Setup
 
 On macOS and Linux:
 
@@ -43,9 +43,50 @@ On Windows:
 PS> git clone git@github.com:scelokhoza/MediaFetch.git
 ```
 
+Setup Instructions
+
+Before running the application, developers need to set up a YouTube API key. Follow the steps below:
+
+    1.Create a YouTube API Key
+    2.Go to the Google Cloud Console.
+    3.Sign in with your Google account.
+    4.Create a new project or select an existing project.
+    5.In the left sidebar, navigate to APIs & Services > Library.
+    6.Search for "YouTube Data API v3" and click on it.
+    7.Click Enable to enable the API for your project.
+    8.After enabling the API, go to APIs & Services > Credentials.
+    9.Click Create Credentials and select API Key.
+    10.Copy the generated API key.
+
+Set the API Key in Environment Variables
+    On macOS/Linux:
+    ```
+    $ nano ~/.bash_profile
+    ```
+    Add the following line to the end of the file:
+    ```export API_KEY=your_youtube_api_key```
+
+    Save the file and exit the text editor.
+    Run the following command to apply the changes:
+```
+$ source ~/.bash_profile
+```
+
+
+    On Windows:
+
+    Open the Start menu and search for "Environment Variables."
+    Select Edit the system environment variables.
+    In the System Properties window, click on the Environment Variables button.
+    Under User variables, click New.
+    For the Variable name, enter API_KEY.
+    For the Variable value, paste your YouTube API key.
+    Click OK to close all dialog boxes.
+
 ## Execution / Usage
 
-To run < MediaFetch >, fire up a terminal window and run the following command:
+
+To run < MediaFetch >, fire up a terminal window and run the following commands:
 
 ```sh
 $ cd MediaFetch
@@ -94,7 +135,7 @@ To run a specific unittests, e.g test_formats_audio: ```sh $ python3 -m unittest
 - Support for [X](https://img.shields.io/badge/x-3670A0?style=for-the-badge&logo=x&logoColor=ffdd54)
 - Support for [Youtube](https://img.shields.io/badge/youtube-3670A0?style=for-the-badge&logo=youtube&logoColor=ffdd54)
 - Support for [Linkedin](https://img.shields.io/badge/linkedin-3670A0?style=for-the-badge&logo=linkedin&logoColor=ffdd54)
-  
+
 ## Contributing
 
 To contribute to the development of < project's name >, follow the steps below:
