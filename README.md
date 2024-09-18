@@ -152,7 +152,7 @@ To contribute to the development of < project's name >, follow the steps below:
 Here's the list of people who have contributed to < project's name >:
 
 - Scelo Khoza – [@MnikaziWempuphuh](https://x.com/Mnikazi0Wempuph) – sceloprince749@gmail.com
-- Nhlanhla Modingoane – nmodingoane023@student.wethinkcode.co.za
+- Nhlanhla Modingoane – https://github.com/Nhlanhla-Modingoane – nhlanhlamodingoane@gmail.com
 
 The < MediaFetch > development team really appreciates and thanks the time and effort that all these fellows have put into the project's growth and improvement.
 
